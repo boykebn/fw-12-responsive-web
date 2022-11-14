@@ -13,6 +13,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Mulish&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+
+    
 <!-- end -->
 
     <title>Sign In Tickitz</title>
@@ -27,12 +32,14 @@
         </section>
 
         <section>
+            <div class="alert-login" id="alert-login"> 
+            </div>
             <div class="title">
                 <h2>Sign In</h2>
                 <p>Sign in with your data that you entered during
                     your registration</p>
             </div>
-            <form class="form">
+            <form class="form" id="form-login">
                 <div>
                     <label for="email">Email</label>
                     <input type="text" name="email" id="email" placeholder="Write your email"/>
@@ -42,9 +49,7 @@
                     <input type="password" id="password" placeholder="Write your password"/>
                 </div>
                 <div>
-                    <button class="btn" type="submit">
-                        <a href="homepage2.html">Sign In</a>
-                    </button>
+                    <button class="btn" type="submit">Sign In</button>
                     <div>
                         <span>Forgot your password ? <a href="forgotpwd.html">Reset Now</a></span>
                     </div>
@@ -55,5 +60,41 @@
             </form>
         </section>
     </main>
+
+    <script type="text/javascript">
+        const alertElm = document.getElementById('alert-login');
+        const formLogin = document.getElementById('form-login');
+
+        formLogin.addEventListener('submit', (event) => {
+            const closeBtn = document.createElement('span');
+            closeBtn.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>'
+            if(event.target.email.value === "admin@mail.com" && event.target.password.value === "1234") {
+                alertElm.innerHTML = '';
+                alertElm.prepend("Login Sukses");
+                alertElm.append(closeBtn);
+                alertElm.setAttribute('class', 'alert-login');
+                alertElm.style.display = 'flex';
+                closeBtn.style.justifyContent = 'space-between';
+                setTimeout(() => {
+                    window.location = '/index.html';
+                }, 5000)
+            }else {
+                alertElm.innerHTML = '';
+                alertElm.prepend("Login Gagal");
+                alertElm.append(closeBtn);
+                alertElm.setAttribute('class', 'alert-warning');
+                alertElm.style.display = 'flex';
+                closeBtn.style.justifyContent = 'space-between';
+            }
+            closeBtn.addEventListener('click', () => {
+            alertElm.style.display = 'none';
+        });
+
+            event.preventDefault();
+        });
+        // alertElm.addEventListener('click', (ev) => {
+        //     ev.target.style.display = 'none';
+        // })
+    </script>
 </body>
 </html>

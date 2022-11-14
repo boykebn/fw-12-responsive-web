@@ -103,7 +103,7 @@
         </div>
         <div class="month">
             <div class="btn-month">
-                <div class="btn-active">
+                <div>
                     <button type="submit">January</button>
                 </div>
                 <div>
@@ -127,7 +127,7 @@
                 <div>
                     <button type="submit">August</button>
                 </div>
-                <!-- <div>
+                <div>
                     <button type="submit">September</button>
                 </div>
                 <div>
@@ -138,78 +138,16 @@
                 </div>
                 <div>
                     <button type="submit">Desember</button>
-                </div> -->
-            </div>
-            </div>
-        <div class="upcoming-content">
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
                 </div>
             </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
             </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
+        <div id="upcoming-content" class="upcoming-content">
+            <div id="content-up-coming" class="content-up-coming">
+                <div class="picture">
+                    <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
                 </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
-            </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
-            </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
-            </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
+                <div class="dsc1">Black Widow</div>
+                <div class="dsc2">Action, Adventure, Sci-Fi</div>
                 <div class="btn-dsc">
                     <button type="submit">Details</button>
                 </div>
@@ -294,5 +232,82 @@
                     &copy; 2020 Tickitz. All Rights Reserved.
                  </div>
         </div>
+
+        <script type="text/javascript">
+            const upcomingWrap = document.getElementById('upcoming-content');
+
+            const item = [
+                {
+                    pictures: './asset/assets/witches-movie.png',
+                    movieName: 'The Witches',
+                    genreName: 'Adventure, Comedy, Family',
+                    aLink: './moviedetails.html?id=1'
+                },
+                {
+                    pictures: './asset/assets/tenet-movie.png',
+                    movieName: 'Tenet',
+                    genreName: 'Action, Sci-Fi',
+                    aLink: './moviedetails.html?id=1'
+                },
+                {
+                    pictures: './asset/assets/movie-bw.png',
+                    movieName: 'Black Widow',
+                    genreName: 'Action, Adventure, Sci-Fi',
+                    aLink: './moviedetails.html?id=1'
+                },
+                {
+                    pictures: './asset/assets/witches-movie.png',
+                    movieName: 'The Witches',
+                    genreName: 'Adventure, Comedy, Family',
+                    aLink: './moviedetails.html?id=1'
+                },
+                {
+                    pictures: './asset/assets/movie-bw.png',
+                    movieName: 'Black Widow',
+                    genreName: 'Action, Adventure, Sci-Fi',
+                    aLink: './moviedetails.html?id=1'
+                },
+                {
+                    pictures: './asset/assets/movie-bw.png',
+                    movieName: 'Black Widow',
+                    genreName: 'Action, Adventure, Sci-Fi',
+                    aLink: './moviedetails.html?id=1'
+                },
+            ]
+
+            item.forEach((data) => {
+                
+            const contentEl = document.createElement('div');
+            contentEl.className = 'content-up-coming';
+
+            const pict = document.createElement('div');
+            pict.className = 'picture';
+            contentEl.appendChild(pict);
+
+            const img = document.createElement('img');
+            img.src = data.pictures;
+            img.alt = 'movie-pict';
+            pict.appendChild(img);
+
+            const descOne = document.createElement('div');
+            descOne.className = 'dsc1';
+            descOne.textContent = data.movieName;
+            contentEl.appendChild(descOne);
+
+            const descTwo = document.createElement('div');
+            descTwo.className = 'dsc2';
+            descTwo.textContent = data.genreName;
+            contentEl.appendChild(descTwo);
+
+            const btnDsc = document.createElement('div');
+            const btn = document.createElement('button');
+            btnDsc.className = 'btn-dsc';
+            btn.textContent = 'Details';
+            btnDsc.appendChild(btn);
+            contentEl.appendChild(btnDsc);
+
+            upcomingWrap.appendChild(contentEl);
+            })
+        </script>
 </body>
 </html>
