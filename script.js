@@ -1,36 +1,38 @@
 if (window.location.href.endsWith('index.html') || window.location.href.endsWith('homepage2.html')) {
+    // mengambil element melalui id
     const contentWrap = document.getElementById('content');
 
+        // array of object sebagai acuan data yang akan di assign ke dalam
     const dataItem = [
         {
             images: './asset/assets/witches-movie.png',
             movieName: 'The Witches',
             genreName: 'Adventure, Comedy, Family',
-            aLink: './moviedetails.html?id=1'
+            aLink: './moviedetails.html'
         },
         {
             images: './asset/assets/witches-movie.png',
             movieName: 'The Witches',
             genreName: 'Adventure, Comedy, Family',
-            aLink: './moviedetails.html?id=1'
+            aLink: './moviedetails.html'
         },
         {
             images: './asset/assets/witches-movie.png',
             movieName: 'The Witches',
             genreName: 'Adventure, Comedy, Family',
-            aLink: './moviedetails.html?id=1'
+            aLink: './moviedetails.html'
         },
         {
             images: './asset/assets/witches-movie.png',
             movieName: 'The Witches',
             genreName: 'Adventure, Comedy, Family',
-            aLink: './moviedetails.html?id=1'
+            aLink: './moviedetails.html'
         },
         {
             images: './asset/assets/witches-movie.png',
             movieName: 'The Witches',
             genreName: 'Adventure, Comedy, Family',
-            aLink: './moviedetails.html?id=1'
+            aLink: './moviedetails.html'
         },
     ];
 
@@ -78,6 +80,10 @@ if (window.location.href.endsWith('index.html') || window.location.href.endsWith
     btndesc.textContent = 'details';
     btnDesc.appendChild(btndesc);
     description.appendChild(btnDesc);
+
+    btndesc.addEventListener('click', () => {
+        window.location = item.aLink;
+    });
     });
     
     const upcomingWrap = document.getElementById('upcoming-content');
@@ -87,37 +93,37 @@ if (window.location.href.endsWith('index.html') || window.location.href.endsWith
             pictures: './asset/assets/witches-movie.png',
             movieName: 'The Witches',
             genreName: 'Adventure, Comedy, Family',
-            aLink: './moviedetails.html?id=1'
+            aLink: './moviedetails.html'
         },
         {
             pictures: './asset/assets/tenet-movie.png',
             movieName: 'Tenet',
             genreName: 'Action, Sci-Fi',
-            aLink: './moviedetails.html?id=1'
+            aLink: './moviedetails.html'
         },
         {
             pictures: './asset/assets/movie-bw.png',
             movieName: 'Black Widow',
             genreName: 'Action, Adventure, Sci-Fi',
-            aLink: './moviedetails.html?id=1'
+            aLink: './moviedetails.html'
         },
         {
             pictures: './asset/assets/witches-movie.png',
             movieName: 'The Witches',
             genreName: 'Adventure, Comedy, Family',
-            aLink: './moviedetails.html?id=1'
+            aLink: './moviedetails.html'
         },
         {
             pictures: './asset/assets/movie-bw.png',
             movieName: 'Black Widow',
             genreName: 'Action, Adventure, Sci-Fi',
-            aLink: './moviedetails.html?id=1'
+            aLink: './moviedetails.html'
         },
         {
             pictures: './asset/assets/movie-bw.png',
             movieName: 'Black Widow',
             genreName: 'Action, Adventure, Sci-Fi',
-            aLink: './moviedetails.html?id=1'
+            aLink: '/moviedetails.html'
         },
     ]
 
@@ -147,27 +153,36 @@ if (window.location.href.endsWith('index.html') || window.location.href.endsWith
     contentEl.appendChild(descTwo);
 
     const btnDsc = document.createElement('div');
-    const btn = document.createElement('button');
     btnDsc.className = 'btn-dsc';
+    contentEl.appendChild(btnDsc);
+
+    const btn = document.createElement('button');
     btn.textContent = 'Details';
     btnDsc.appendChild(btn);
-    contentEl.appendChild(btnDsc);
+    
+    btn.addEventListener('click', () => {
+        window.location = data.aLink;
+    });
 
     });
 } else if(window.location.href.endsWith('signin.html')) {
+    // mengambil sebuah element melalui id
     const alertElm = document.getElementById('alert-login');
     const formLogin = document.getElementById('form-login');
 
+    // melakukan validasi ketika submit
     formLogin.addEventListener('submit', (event) => {
         const closeBtn = document.createElement('span');
-        closeBtn.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>'
+        closeBtn.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
+        
+        // kondisi dalam validasi
         if(event.target.email.value === "admin@tickitz.com" && event.target.password.value === "1234") {
             alertElm.innerHTML = '';
             alertElm.prepend("Login Sukses");
             alertElm.append(closeBtn);
             alertElm.setAttribute('class', 'alert-login');
             alertElm.style.display = 'flex';
-            closeBtn.style.justifyContent = 'space-between';
+            closeBtn.style.marginLeft = '10px';
             setTimeout(() => {
                 window.location = '/index.html';
             }, 3000)
@@ -177,8 +192,9 @@ if (window.location.href.endsWith('index.html') || window.location.href.endsWith
             alertElm.append(closeBtn);
             alertElm.setAttribute('class', 'alert-warning');
             alertElm.style.display = 'flex';
-            closeBtn.style.justifyContent = 'space-between';
+            closeBtn.style.marginLeft = '10px';
         }
+        // validasi untuk button close
         closeBtn.addEventListener('click', () => {
         alertElm.style.display = 'none';
     });

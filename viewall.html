@@ -156,52 +156,56 @@
         <script type="text/javascript">
 
         const upcomingWrap = document.getElementById('upcoming-content');
-        const getData = fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=ead1d8a314197c8be641efe9adeea96b&language=en-US&page=5');
+        const getDataMovie = fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=ead1d8a314197c8be641efe9adeea96b&language=en-US&page=5');
+        const getDataGenre = fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=ead1d8a314197c8be641efe9adeea96b&language=en-US');
+
         
-    getData.then((results) => {
-        return results.json();
-    })
-    .then((res) => {
-        console.log(res);
-    })
-
-
-
-
-
-    getData.forEach((data) => {
+        const getData = (async () => {
+            const responseMovie = await getDataMovie;
+            const responseGenre = await getDataGenre;
+            
+            const dataMovie = await responseMovie.json();
+            const dataGenre = await responseGenre.json();
+            
+        dataMovie.forEach((data) => {
         
-    const contentEl = document.createElement('div');
-    contentEl.className = 'content-up-coming';
-    upcomingWrap.appendChild(contentEl);
+            const contentEl = document.createElement('div');
+            contentEl.className = 'content-up-coming';
+            upcomingWrap.appendChild(contentEl);
+        
+            const pict = document.createElement('div');
+            pict.className = 'picture';
+            contentEl.appendChild(pict);
+        
+            const img = document.createElement('img');
+            img.src = data.poster_path;
+            img.alt = 'movie-pict';
+            pict.appendChild(img);
+        
+            const descOne = document.createElement('div');
+            descOne.className = 'dsc1';
+            descOne.textContent = data.title;
+            contentEl.appendChild(descOne);
+        
+            const descTwo = document.createElement('div');
+            descTwo.className = 'dsc2';
+            descTwo.textContent = data.genreName;
+            contentEl.appendChild(descTwo);
+        
+            const btnDsc = document.createElement('div');
+            const btn = document.createElement('button');
+            btnDsc.className = 'btn-dsc';
+            btn.textContent = 'Details';
+            btnDsc.appendChild(btn);
+            contentEl.appendChild(btnDsc);
+        
+            });
+        });
 
-    const pict = document.createElement('div');
-    pict.className = 'picture';
-    contentEl.appendChild(pict);
 
-    const img = document.createElement('img');
-    img.src = getData.poster_path;
-    img.alt = 'movie-pict';
-    pict.appendChild(img);
 
-    const descOne = document.createElement('div');
-    descOne.className = 'dsc1';
-    descOne.textContent = data.movieName;
-    contentEl.appendChild(descOne);
 
-    const descTwo = document.createElement('div');
-    descTwo.className = 'dsc2';
-    descTwo.textContent = data.genreName;
-    contentEl.appendChild(descTwo);
-
-    const btnDsc = document.createElement('div');
-    const btn = document.createElement('button');
-    btnDsc.className = 'btn-dsc';
-    btn.textContent = 'Details';
-    btnDsc.appendChild(btn);
-    contentEl.appendChild(btnDsc);
-
-    });
+    
         </script>
 </body>
 </html>
