@@ -59,142 +59,32 @@
         </div>
         <div class="month">
             <div class="btn-month">
-                <div class="btn-active">
                     <button type="submit">January</button>
-                </div>
-                <div>
                     <button type="submit">February</button>
-                </div>
-                <div>
                     <button type="submit">March</button>
-                </div>
-                <div>
                     <button type="submit">April</button>
-                </div>
-                <div>
                     <button type="submit">May</button>
-                </div>
-                <div>
                     <button type="submit">June</button>
-                </div>
-                <div>
                     <button type="submit">July</button>
-                </div>
-                <div>
                     <button type="submit">August</button>
-                </div>
-                <!-- <div>
                     <button type="submit">September</button>
-                </div>
-                <div>
                     <button type="submit">Oktober</button>
-                </div>
-                <div>
                     <button type="submit">November</button>
-                </div>
-                <div>
                     <button type="submit">Desember</button>
-                </div> -->
             </div>
             </div>
-        <div class="upcoming-content actived">
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
-            </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
+            <div id="upcoming-content" class="upcoming-content">
+                <div id="content-up-coming" class="content-up-coming">
+                    <div class="picture">
+                        <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
+                    </div>
+                    <div class="dsc1">Black Widow</div>
+                    <div class="dsc2">Action, Adventure, Sci-Fi</div>
+                    <div class="btn-dsc">
+                        <button type="submit">Details</button>
+                    </div>
                 </div>
             </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
-            </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
-            </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
-            </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
-            </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
-            </div>
-            <div class="content-up-coming">
-                <img src="./asset/assets/movie-bw.png" alt="movie-bw" />
-                <div class="dsc1">
-                    <p>Black Widow</p>
-                </div>
-                <div class="dsc2">
-                    <p>Action, Adventure, Sci-Fi</p>
-                </div>
-                <div class="btn-dsc">
-                    <button type="submit">Details</button>
-                </div>
-            </div>
-        </div>
         <!-- rolled start -->
         <div class="rolled">
             <div class="rolled actived">1</div>
@@ -262,5 +152,56 @@
                 </div>
         </div>
         <!-- footer end -->
+
+        <script type="text/javascript">
+
+        const upcomingWrap = document.getElementById('upcoming-content');
+        const getData = fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=ead1d8a314197c8be641efe9adeea96b&language=en-US&page=5');
+        
+    getData.then((results) => {
+        return results.json();
+    })
+    .then((res) => {
+        console.log(res);
+    })
+
+
+
+
+
+    getData.forEach((data) => {
+        
+    const contentEl = document.createElement('div');
+    contentEl.className = 'content-up-coming';
+    upcomingWrap.appendChild(contentEl);
+
+    const pict = document.createElement('div');
+    pict.className = 'picture';
+    contentEl.appendChild(pict);
+
+    const img = document.createElement('img');
+    img.src = getData.poster_path;
+    img.alt = 'movie-pict';
+    pict.appendChild(img);
+
+    const descOne = document.createElement('div');
+    descOne.className = 'dsc1';
+    descOne.textContent = data.movieName;
+    contentEl.appendChild(descOne);
+
+    const descTwo = document.createElement('div');
+    descTwo.className = 'dsc2';
+    descTwo.textContent = data.genreName;
+    contentEl.appendChild(descTwo);
+
+    const btnDsc = document.createElement('div');
+    const btn = document.createElement('button');
+    btnDsc.className = 'btn-dsc';
+    btn.textContent = 'Details';
+    btnDsc.appendChild(btn);
+    contentEl.appendChild(btnDsc);
+
+    });
+        </script>
 </body>
 </html>

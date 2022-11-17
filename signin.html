@@ -61,37 +61,8 @@
         </section>
     </main>
 
-    <script type="text/javascript">
-        const alertElm = document.getElementById('alert-login');
-        const formLogin = document.getElementById('form-login');
-
-        formLogin.addEventListener('submit', (event) => {
-            const closeBtn = document.createElement('span');
-            closeBtn.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>'
-            if(event.target.email.value === "admin@mail.com" && event.target.password.value === "1234") {
-                alertElm.innerHTML = '';
-                alertElm.prepend("Login Sukses");
-                alertElm.append(closeBtn);
-                alertElm.setAttribute('class', 'alert-login');
-                alertElm.style.display = 'flex';
-                closeBtn.style.justifyContent = 'space-between';
-                setTimeout(() => {
-                    window.location = '/index.html';
-                }, 5000)
-            }else {
-                alertElm.innerHTML = '';
-                alertElm.prepend("Login Gagal");
-                alertElm.append(closeBtn);
-                alertElm.setAttribute('class', 'alert-warning');
-                alertElm.style.display = 'flex';
-                closeBtn.style.justifyContent = 'space-between';
-            }
-            closeBtn.addEventListener('click', () => {
-            alertElm.style.display = 'none';
-        });
-
-            event.preventDefault();
-        });
+    <script src="script.js" type="text/javascript">
+       
         // alertElm.addEventListener('click', (ev) => {
         //     ev.target.style.display = 'none';
         // })

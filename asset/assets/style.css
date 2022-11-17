@@ -435,6 +435,7 @@ section.now-showing .heading-show > div:nth-child(1) {
 }
 
 section.now-showing .content {
+    display: flex;
     margin-top: 30px;
     white-space: nowrap;
     overflow: scroll;
@@ -442,8 +443,22 @@ section.now-showing .content {
     overflow-x: visible;
 }
 
+section.now-showing .content-grid:hover {
+    padding: 36px;
+    background: #fff;
+    border: 2px solid #DEDEDE;
+    border-radius: 8px;
+    box-shadow: 0px 8px 30px rgba(186, 186, 186, 0.25);
+    margin-left: 24px;
+    margin-bottom: 20px;
+}
+
+section.now-showing .content-hov:hover > .description {
+    display: block;
+}
+
 section.now-showing .content-grid {
-    display: inline-block;
+    height: 100%;
     padding: 36px;
     margin-top: 20px;
     background: rgba(255, 255, 255, 0.2);
@@ -453,19 +468,7 @@ section.now-showing .content-grid {
     margin-bottom: 20px;
 }
 
-section.now-showing .content-grid.active:hover {
-    display: none;
-    padding: 36px;
-    margin-top: 72px;
-    background: #fff;
-    border: 2px solid #DEDEDE;
-    border-radius: 8px;
-    box-shadow: 0px 8px 30px rgba(186, 186, 186, 0.25);
-    margin-left: 24px;
-    margin-bottom: 100px;
-}
-
-section.now-showing .content-grid.active .dsc1 {
+section.now-showing .content-hov .dsc1 {
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 700;
@@ -475,8 +478,14 @@ section.now-showing .content-grid.active .dsc1 {
     letter-spacing: 0.15px;
     color: #14142B;
 }
+section.now-showing .content-hov .dsc1 p{
+    margin-top: 5px;
+    margin-bottom: 5px;
 
-section.now-showing .content-grid.active .dsc2 {
+}
+
+section.now-showing .content-hov .dsc2 {
+
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
@@ -487,14 +496,12 @@ section.now-showing .content-grid.active .dsc2 {
     color: #A0A3BD;
 }
 
-section.now-showing .content-grid.active .btn-dsc button {
+section.now-showing .content-hov .btn-dsc button {
     width: 159px;
     height: 33px;
     border: 1px solid #5F2EEA;
     border-radius: 4px;
     background: #FFFFFF;
-    margin-top: 40px;
-    margin-bottom: 32px;
 
     font-family: 'Mulish';
     font-style: normal;
@@ -503,6 +510,11 @@ section.now-showing .content-grid.active .btn-dsc button {
     line-height: 18px;
     text-align: center;
     color: #5F2EEA;
+}
+
+section.now-showing .content-hov .description {
+    margin: 0;
+    display: none;
 }
 
 section.up-coming {
@@ -578,14 +590,8 @@ section.up-coming .heading-upcoming > div:nth-child(1) {
 
 
 section.up-coming .month .btn-month {
-    display: flex;
     white-space: nowrap;
     overflow-x: scroll;
-}
-
-section.up-coming .month .btn-month > div {
-    padding-top: 40px;
-    padding-left: 16px; 
 }
 
 section.up-coming .month .btn-month button {
@@ -602,11 +608,16 @@ section.up-coming .month .btn-month button {
     line-height: 18px;
     text-align: center;
     color: #5F2EEA;
+    margin-top: 40px;
     margin-bottom: 20px;
-    
+    margin-left: 16px;
 }
 
-section.up-coming .month .btn-month:hover div:nth-child(1) button {
+section.up-coming .month .btn-month button:nth-child(1) {
+    margin-left: 0;
+}
+
+section.up-coming .btn-month button:hover {
     background: #5F2EEA;
     color: #FFFFFF;
 }
